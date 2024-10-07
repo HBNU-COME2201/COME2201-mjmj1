@@ -19,8 +19,10 @@ class InitManager
 {
 public:
     InitManager() {}
+    // 생성자를 통해 path를 인자값으로 전달
     InitManager(std::string path)
     {
+        // tinyxml을 사용하여 인자값으로 주어진 경로의 파일을 load
         doc.LoadFile(path.c_str());
 
         // for문 바깥에서 선언하여 for문을 돌 때마다 생성되는 것을 방지함
@@ -68,6 +70,7 @@ public:
     }
 
 private:
+    // 멤버 변수로 tinyxml의 클래스와 agent를 저장해둘 vector를 가짐
     tinyxml2::XMLDocument doc;
     std::vector<CAgent*> m_agentList;
 
@@ -76,6 +79,7 @@ private:
 int main(int argc, char** argv)
 {// Clinet Code  
 
+    // 인자값으로 test.xml을 넘겨 test.xml을 읽고 정의된 agent 데이터를 통해 객체를 생성하고 vector에 저장
     InitManager init_manager("test.xml");
 
     /* Simulation Engine */
