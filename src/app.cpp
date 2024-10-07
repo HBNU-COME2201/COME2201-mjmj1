@@ -119,9 +119,12 @@ int main(int argc, char** argv)
         mmanager.svc(time_step);
 
         std::cout << "----" << std::endl;
+        // init_manager 생성자에서 만들어진 agent를 순회하면서 << operator 수행
+        // << 내부적으론 맴버 메서드 to_string이 수행됨
         for(std::vector<CAgent*>::iterator iter = init_manager.get_agent_list().begin();
             iter != init_manager.get_agent_list().end(); iter++)
         {
+            // 포인터로 저장된 객체를 담은 리스트를 순회하면서 포인터를 가져옴
             std::cout << "Time: " << sim_time << ", " << **iter << std::endl;
             // (*iter) -> CAgent*
             // *(*iter) -> CAgent
